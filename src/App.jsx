@@ -8,6 +8,8 @@ function App() {
     <div className='flex flex-wrap justify-center mt-5'>
     <Card/>
     <Card/>
+    <Card/>
+    <Card/>
     </div>
     </div>
   )
