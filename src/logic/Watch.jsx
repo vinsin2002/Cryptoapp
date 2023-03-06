@@ -8,6 +8,8 @@ function roundTo(n, place) {
   }
 function Watch() {
   let api = 'https://api.coincap.io/v2/assets?ids=';
+  let imgurl = 'https://assets.coincap.io/assets/icons/';
+  let endurl = '@2x.png';
 let watchlist = ["bitcoin","ethereum","dogecoin","xrp","solana","tether"]
 const [coindata, setcoindata] = useState([]);
 const [loaded,setloaded] = useState(false);
@@ -17,7 +19,9 @@ async function getUser() {
   {
       try {
         const response = await axios.get(api+watchlist[coin]);
-        some.push({sym:response.data.data[0].symbol,price:roundTo(response.data.data[0].priceUsd,2),percentchange:roundTo(response.data.data[0].changePercent24Hr,2)});
+        // console.log(imgurl+(response.data.data[0].symbol).toLowerCase()+endurl);
+        some.push({sym:response.data.data[0].symbol,price:roundTo(response.data.data[0].priceUsd,2),percentchange:roundTo(response.data.data[0].changePercent24Hr,2),
+        img:(imgurl+(response.data.data[0].symbol).toLowerCase()+endurl)});
       } catch (error) {
         console.error(error);
       }
@@ -34,7 +38,7 @@ setInterval(getUser(),100000);
           {!loaded && <div className=' flex justify-center mt-20'><Loader/></div>}
           {loaded && <div className='flex flex-wrap justify-center mt-5'>
               {coindata.map((coind) => (
-                <Card id={coind.sym} perchange={coind.percentchange} price={coind.price} />
+                <Card id={coind.sym} perchange={coind.percentchange} price={coind.price} imager={coind.img} />
               ))}
           </div>}
       </div>
