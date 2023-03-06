@@ -1,16 +1,11 @@
 import React from 'react'
 import Navbar from './components/Navbar'
-import Card from './components/Card'
+import Watch from './logic/Watch'
 function App() {
   return (
-    <div className='h-screen w-screen bg-gray-900'>
-    <Navbar/>
-    <div className='flex flex-wrap justify-center mt-5'>
-    <Card/>
-    <Card/>
-    <Card/>
-    <Card/>
-    </div>
+    <div className=' h-screen overflow-auto bg-gray-900  '>
+      <Navbar/>
+      <Watch/>
     </div>
   )
 }
