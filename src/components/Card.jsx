@@ -19,6 +19,10 @@ function Card() {
       console.error(error);
     }
   }
+  useEffect(() => {
+    getData();
+  }, [])
+  
   setInterval(getData,60000);
   return (
     <div className='bg-white h-20 w-full font-rubik border-2 border-blue-900 sm:w-1/3 m-3 rounded-xl shadow-blue-900 shadow-xl flex items-center justify-evenly'>
@@ -29,7 +33,7 @@ function Card() {
             <h1 className='text-3xl text-gray-500 '>BTC</h1>
         </div>
         <div>
-        <h1 className='text-2xl text-green-500'>+{percentchange}%</h1>
+        <h1 className={`text-2xl ${percentchange >= 0 ? ' text-green-500' : ' text-red-500'}`}>+{percentchange}%</h1>
         <h1 className='text-gray-500 '>{pricebtc}$</h1>
         </div>
     </div>
