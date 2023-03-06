@@ -28,7 +28,7 @@ async function getUser() {
 useEffect(() => {
   getUser();
 }, [])
-
+setInterval(getUser(),100000);
     return (
       <div>
           {!loaded && <div className=' flex justify-center mt-20'><Loader/></div>}
