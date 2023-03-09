@@ -1,5 +1,6 @@
 import React from 'react'
-
+import { NavLink } from 'react-router-dom'
+import App from '../App'
 function Navbar() {
   return (
     <div className='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 flex flex-col flex-wrap'>
@@ -7,14 +8,20 @@ function Navbar() {
          Crypto.  
         </div>  
         <ul className='text-white font-rubik cursor-default flex justify-evenly mt-5 mb-3'>
-            <li className='hover:border-b-2'>
-                Watchlist
+            <li>
+                <NavLink className={({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "border-b-2" : ""
+  } to="/">Watchlist</NavLink>
             </li>
-            <li className='hover:border-b-2'>
-                Portfolio
+            <li>
+               <NavLink className={({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "border-b-2" : ""
+  } to="/portfolio">Portfolio</NavLink>
             </li>
-            <li className='hover:border-b-2'>
-                Account
+            <li>
+              <NavLink className={({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "border-b-2" : ""
+  } to="/account">Account</NavLink>
             </li>
         </ul>
     </div>
